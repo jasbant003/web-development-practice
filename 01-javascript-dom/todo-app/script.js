@@ -1,23 +1,31 @@
 function addTodo() {
-    let parent = document.getElementById("second-child");
+    const list = document.getElementById("lists");
     const value = document.getElementById("input").value;
 
-    let div1 = document.createElement("div");
-    let div2 = document.createElement("div");
-    let button = document.createElement("button");
+    const li = document.createElement("li");
+    const div1 = document.createElement("div");
+    const div2 = document.createElement("div");
+    const p = document.createElement("p");
 
-    button.innerText = "delete";
-    div2.innerText = value;
-    button.classList.add("newButton");
+    div1.classList.add("div1");
+    div2.classList.add("div2");
 
+    li.classList.add("items");
+    p.textContent = value;
+
+    div1.appendChild(p);
+
+    const button = document.createElement("button");
+    button.innerHTML = "DELETE";
     button.addEventListener("click", function () {
-        this.parentNode.remove();
+        this.parentNode.parentNode.remove();
     })
+    button.classList.add("newButton")
 
-    div1.classList.add("children");
-    div1.appendChild(div2);
-    div1.appendChild(button);
-    parent.appendChild(div1);
+    div2.appendChild(button);
+    li.appendChild(div1);
+    li.appendChild(div2);
+    list.appendChild(li);
 
     document.getElementById("input").value = "";
 }
